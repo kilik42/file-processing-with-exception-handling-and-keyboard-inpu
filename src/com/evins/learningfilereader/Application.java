@@ -33,8 +33,10 @@ public class Application {
 				bufferedReader.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
 				System.out.println("unable to close file"+ file.getName());
+			}catch(NullPointerException ex){
+				System.out.println("file was probably never opened"+ ex);
 			}
 			
 			
