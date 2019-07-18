@@ -11,9 +11,10 @@ public class Application {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		File file = new File("myfile.txt");
+		BufferedReader bufferedReader = null;
 		try {
 			FileReader fileReader = new FileReader(file);
-			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			 bufferedReader = new BufferedReader(fileReader);
 			String line = bufferedReader.readLine();
 			while(line != null){
 				System.out.println(line);
@@ -27,6 +28,17 @@ public class Application {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("problem reading the file"+ file.getName());
+		}finally{
+			try {
+				bufferedReader.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("unable to close file"+ file.getName());
+			}
+			
+			
+			
 		}
 		
 		
