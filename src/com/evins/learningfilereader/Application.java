@@ -12,8 +12,9 @@ public class Application {
 		// TODO Auto-generated method stub
 		File file = new File("myfile.txt");
 		BufferedReader bufferedReader = null;
+		FileReader fileReader = null;
 		try {
-			FileReader fileReader = new FileReader(file);
+			fileReader = new FileReader(file);
 			 bufferedReader = new BufferedReader(fileReader);
 			String line = bufferedReader.readLine();
 			while(line != null){
@@ -30,14 +31,23 @@ public class Application {
 			System.out.println("problem reading the file"+ file.getName());
 		}finally{
 			try {
-				bufferedReader.close();
+				if(bufferedReader != null){
+					bufferedReader.close();
+				}if(fileReader != null){
+					fileReader.close();
+				}
+				
+				
+				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				//e.printStackTrace();
 				System.out.println("unable to close file"+ file.getName());
-			}catch(NullPointerException ex){
-				System.out.println("file was probably never opened"+ ex);
 			}
+//			catch(NullPointerException ex){
+//				System.out.println("file was probably never opened" + ex);
+//			}
+			
 			
 			
 			
